@@ -1,0 +1,40 @@
+
+table {
+  width: 720px;            
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-bottom: 12px;
+  font-size: 20px;     
+}
+
+th, td {
+  border: 2px solid #333;      
+  padding: 6px 8px;           
+  vertical-align: middle;
+}
+
+.cateTable th,
+.cateTable td {
+  font-weight: bold;
+  text-align: left;
+}
+
+.wId    { width: 100px; }
+.wName  { width: 220px; }
+.wPrice { width: 140px; }
+.wPic   {
+  width: 180px;
+  text-align: center;
+}
+
+.product-row td {
+  height: 70px;           
+}
+
+.pic {
+  width: 100px;               
+  height: 70px;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}

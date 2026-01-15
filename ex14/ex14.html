@@ -1,0 +1,30 @@
+<div class="block" *ngFor="let c of categories">
+  <table class="cateTable">
+    <tr>
+      <th>Ma Danh Muc</th>
+      <th>Ten Danh Muc</th>
+    </tr>
+    <tr>
+      <td>{{ c.Cateid }}</td>
+      <td>{{ c.CateName }}</td>
+    </tr>
+  </table>
+
+  <table class="proTable">
+    <tr>
+      <th class="wId">Ma San Pham</th>
+      <th class="wName">Ten San Pham</th>
+      <th class="wPrice">Gia San Pham</th>
+      <th class="wPic">Picture</th>
+    </tr>
+
+    <tr *ngFor="let p of c.Products">
+      <td class="wId">{{ p.ProductId }}</td>
+      <td class="wName">{{ p.ProductName }}</td>
+      <td class="wPrice">{{ p.Price }}</td>
+      <td class="wPic">
+        <img class="pic" [src]="p.Image" alt="">
+      </td>
+    </tr>
+  </table>
+</div>
