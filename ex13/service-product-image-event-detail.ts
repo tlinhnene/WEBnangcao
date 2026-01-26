@@ -1,0 +1,31 @@
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { ProductService } from '../product-service';
+
+@Component({
+  selector: 'app-service-product-image-event-detail',
+  standalone: false,
+  templateUrl: './service-product-image-event-detail.html',
+  styleUrls: ['./service-product-image-event-detail.css'],
+})
+export class ServiceProductImageEventDetail {
+
+  selectedProduct: any;
+
+  constructor(
+    private activateRoute: ActivatedRoute,
+    private _fs: ProductService,
+    private router: Router
+  ) {
+    this.activateRoute.paramMap.subscribe((param: ParamMap) => {
+      const id = param.get('id');
+      if (id!= null) {
+        this.selectedProduct = this._fs.getProductDetail(id);
+      }
+    });
+  }
+
+  goBack() {
+    this.router.navigate(['service-product-image-event']);
+  }
+}
