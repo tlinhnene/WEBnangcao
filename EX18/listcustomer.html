@@ -1,0 +1,33 @@
+<p>Lê Thị Trúc Linh - K234111395</p>
+
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Age</th>
+      <th>#</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <ng-container *ngFor="let type of customerTypes">
+      <tr>
+        <td colspan="5">
+          {{ type.CustomerTypeId }} - {{ type.CustomterTypeName }}
+        </td>
+      </tr>
+
+      <tr *ngFor="let c of type.Customers">
+        <td>{{ c.Id }}</td>
+        <td>{{ c.Name }}</td>
+        <td>{{ c.Email }}</td>
+        <td>{{ c.Age }}</td>
+        <td>
+          <img [src]="c.Image" width="120" height="140">
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
