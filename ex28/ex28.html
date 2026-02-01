@@ -1,0 +1,63 @@
+<div class="crypto-page-container">
+    <div class="page-header">
+        <div class="header-badge">LIVE TRACKING</div>
+        <h2 class="text-gradient">Bitcoin Price Index</h2>
+        <p class="subtitle" *ngIf="bpiData">Last Synchronized: <span class="time-stamp">{{ bpiData.time.updated
+                }}</span></p>
+    </div>
+
+    <div class="loading-state" *ngIf="loading && !bpiData">
+        <div class="crypto-spinner"></div>
+        <p>Synchronizing with Global Exchange...</p>
+    </div>
+
+    <div class="error-state" *ngIf="errMessage">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <p>{{ errMessage }}</p>
+        <div class="error-actions">
+            <button (click)="fetchBpi()" class="btn-refresh"><i class="bi bi-arrow-clockwise"></i> Try Again</button>
+        </div>
+    </div>
+
+    <div class="dashboard-grid" *ngIf="bpiData">
+        <div class="main-ticker-card glass">
+            <div class="ticker-header">
+                <div class="coin-icon">
+                    <i class="bi bi-currency-bitcoin"></i>
+                </div>
+                <div class="ticker-info">
+                    <h3>Bitcoin <span class="ticker-symbol">(BTC/USD)</span></h3>
+                    <p>{{ bpiData.disclaimer }}</p>
+                </div>
+            </div>
+            <div class="price-display">
+                <span class="currency-symbol">$</span>
+                <span class="rate">{{ bpiData.bpi['USD'].rate }}</span>
+            </div>
+            <div class="card-footer">
+                <span class="status-live"><i class="bi bi-record-fill"></i> REAL-TIME FEED</span>
+                <button class="btn-sync" (click)="fetchBpi()" [class.syncing]="loading">
+                    <i class="bi bi-arrow-clockwise"></i> Sync Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Currency Cards -->
+        <div class="currency-row">
+            <div class="currency-card glass" *ngFor="let c of getCurrencies()">
+                <div class="c-header">
+                    <span class="c-code">{{ c.code }}</span>
+                    <span class="c-desc">{{ c.description }}</span>
+                </div>
+                <div class="c-price">
+                    <span [innerHTML]="c.symbol"></span> {{ c.rate }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="disclaimer-banner" *ngIf="bpiData">
+        <i class="bi bi-info-circle-fill"></i> Powered by CoinDesk. Non-USD values are converted hourly via Open
+        Exchange Rates.
+    </div>
+</div>
