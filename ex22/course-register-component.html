@@ -1,0 +1,109 @@
+<div class="signup-page luxury-theme">
+  <div class="page-header">
+    <h2 class="text-gradient">Premier Learning Hub</h2>
+    <p class="subtitle">Join premium, career focused specialty tracks</p>
+  </div>
+
+  <div class="signup-glass-card">
+    <div class="card-glow"></div>
+    <h3 class="form-title-inner">Enrollment Information</h3>
+
+    <form class="premium-form" [formGroup]="regForm" (ngSubmit)="onSubmit()">
+      <div class="form-grid">
+        <div class="form-group">
+          <label><i class="bi bi-person-fill"></i> Learner Name</label>
+          <div class="input-wrapper">
+            <input type="text" formControlName="name" placeholder="Type your full name" />
+            <div
+              class="validation-dot"
+              [ngClass]="{ valid: f['name'].valid, invalid: f['name'].touched && f['name'].invalid }"
+            ></div>
+          </div>
+          <p class="err-msg" *ngIf="f['name'].touched && f['name'].invalid">Name is required</p>
+        </div>
+
+        <div class="form-group">
+          <label><i class="bi bi-envelope-at-fill"></i> Email</label>
+          <div class="input-wrapper">
+            <input type="email" formControlName="email" placeholder="you@example.com" />
+            <div
+              class="validation-dot"
+              [ngClass]="{ valid: f['email'].valid, invalid: f['email'].touched && f['email'].invalid }"
+            ></div>
+          </div>
+
+          <div class="err-msg" *ngIf="f['email'].touched && f['email'].invalid">
+            <span *ngIf="f['email'].errors?.['required']">Email can’t be empty</span>
+            <span *ngIf="f['email'].errors?.['email']">Email format looks wrong</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="bi bi-telephone-fill"></i> Contact Number</label>
+          <div class="input-wrapper">
+            <input type="text" formControlName="phone" placeholder="+00 000 000 000" />
+            <div
+              class="validation-dot"
+              [ngClass]="{ valid: f['phone'].valid, invalid: f['phone'].touched && f['phone'].invalid }"
+            ></div>
+          </div>
+          <p class="err-msg" *ngIf="f['phone'].touched && f['phone'].invalid">
+            Please enter a valid phone number
+          </p>
+        </div>
+
+        <div class="form-group">
+          <label><i class="bi bi-journal-bookmark-fill"></i> Program</label>
+          <div class="input-wrapper">
+            <select formControlName="course">
+              <option *ngFor="let item of courses" [value]="item">
+                {{ item }} Masterclass
+              </option>
+            </select>
+            <i class="bi bi-chevron-down select-icon"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-options">
+        <div class="option-group">
+          <label>Preferred Session</label>
+          <div class="radio-chips">
+            <label class="chip">
+              <input type="radio" formControlName="time" value="sang" />
+              <span class="chip-label">AM</span>
+            </label>
+
+            <label class="chip">
+              <input type="radio" formControlName="time" value="toi" />
+              <span class="chip-label">PM</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="option-group checkbox-premium">
+          <label class="toggle-container">
+            <input type="checkbox" formControlName="agree" />
+            <span class="toggle-slider"></span>
+            <span class="toggle-label">I agree to the Premium Terms</span>
+          </label>
+          <p class="err-msg" *ngIf="f['agree'].touched && f['agree'].invalid">You must accept to continue</p>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-royal" [disabled]="!regForm.valid && regForm.touched">
+        Complete Sign Up <i class="bi bi-arrow-right-short"></i>
+      </button>
+    </form>
+
+    <div class="result-terminal" *ngIf="resultJson">
+      <div class="terminal-header">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <span class="terminal-title">ENROLLMENT_RESULT.JSON</span>
+      </div>
+      <div class="terminal-content">
+        <pre><code>{{ resultJson }}</code></pre>
+      </div>
+    </div>
+  </div>
+</div>
