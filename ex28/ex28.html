@@ -1,21 +1,26 @@
 <div class="crypto-page-container">
     <div class="page-header">
-        <div class="header-badge">LIVE TRACKING</div>
-        <h2 class="text-gradient">Bitcoin Price Index</h2>
-        <p class="subtitle" *ngIf="bpiData">Last Synchronized: <span class="time-stamp">{{ bpiData.time.updated
-                }}</span></p>
+        <div class="header-badge">LIVE MARKET DATA</div>
+        <h2 class="text-gradient">Bitcoin Market Index</h2>
+        <p class="subtitle" *ngIf="bpiData">
+            Last Updated:
+            <span class="time-stamp">{{ bpiData.time.updated }}</span>
+        </p>
     </div>
 
     <div class="loading-state" *ngIf="loading && !bpiData">
         <div class="crypto-spinner"></div>
-        <p>Synchronizing with Global Exchange...</p>
+        <p>Fetching data from global exchanges...</p>
     </div>
 
     <div class="error-state" *ngIf="errMessage">
         <i class="bi bi-exclamation-triangle-fill"></i>
         <p>{{ errMessage }}</p>
         <div class="error-actions">
-            <button (click)="fetchBpi()" class="btn-refresh"><i class="bi bi-arrow-clockwise"></i> Try Again</button>
+            <button (click)="fetchBpi()" class="btn-refresh">
+                <i class="bi bi-arrow-clockwise"></i>
+                Reload Data
+            </button>
         </div>
     </div>
 
@@ -26,18 +31,27 @@
                     <i class="bi bi-currency-bitcoin"></i>
                 </div>
                 <div class="ticker-info">
-                    <h3>Bitcoin <span class="ticker-symbol">(BTC/USD)</span></h3>
+                    <h3>
+                        Bitcoin
+                        <span class="ticker-symbol">(BTC to USD)</span>
+                    </h3>
                     <p>{{ bpiData.disclaimer }}</p>
                 </div>
             </div>
+
             <div class="price-display">
                 <span class="currency-symbol">$</span>
                 <span class="rate">{{ bpiData.bpi['USD'].rate }}</span>
             </div>
+
             <div class="card-footer">
-                <span class="status-live"><i class="bi bi-record-fill"></i> REAL-TIME FEED</span>
+                <span class="status-live">
+                    <i class="bi bi-record-fill"></i>
+                    LIVE PRICE FEED
+                </span>
                 <button class="btn-sync" (click)="fetchBpi()" [class.syncing]="loading">
-                    <i class="bi bi-arrow-clockwise"></i> Sync Now
+                    <i class="bi bi-arrow-clockwise"></i>
+                    Refresh
                 </button>
             </div>
         </div>
@@ -50,14 +64,15 @@
                     <span class="c-desc">{{ c.description }}</span>
                 </div>
                 <div class="c-price">
-                    <span [innerHTML]="c.symbol"></span> {{ c.rate }}
+                    <span [innerHTML]="c.symbol"></span>
+                    {{ c.rate }}
                 </div>
             </div>
         </div>
     </div>
 
     <div class="disclaimer-banner" *ngIf="bpiData">
-        <i class="bi bi-info-circle-fill"></i> Powered by CoinDesk. Non-USD values are converted hourly via Open
-        Exchange Rates.
+        <i class="bi bi-info-circle-fill"></i>
+        Data provided by CoinDesk. Exchange rates are updated periodically.
     </div>
 </div>
