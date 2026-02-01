@@ -1,0 +1,42 @@
+<div class="login-container">
+  <div class="login-card">
+    <button class="close-btn" type="button">×</button>
+
+    <h2 class="title">Login to the Teacher</h2>
+    <hr class="divider" />
+
+    <div class="content">
+      <div class="logo-box">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Logo_Tr%C6%B0%E1%BB%9Dng_%C4%90%E1%BA%A1i_h%E1%BB%8Dc_Kinh_t%E1%BA%BF_-_Lu%E1%BA%ADt.png" alt="UEL Logo" class="logo" />
+      </div>
+
+      <form class="form" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="form-group">
+          <input type="text" formControlName="email" placeholder="Email" />
+          <div class="err" *ngIf="f['email'].touched && f['email'].invalid">
+            <span *ngIf="f['email'].errors?.['required']">Email is required</span>
+            <span *ngIf="f['email'].errors?.['email']">Email is not valid</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="password" formControlName="password" placeholder="Password" />
+          <div class="err" *ngIf="f['password'].touched && f['password'].invalid">
+            <span *ngIf="f['password'].errors?.['required']">Password is required</span>
+            <span *ngIf="f['password'].errors?.['minlength']">Password must be at least 5 characters</span>
+          </div>
+        </div>
+
+        <label class="remember">
+          <input type="checkbox" formControlName="remember" />
+          Save login information
+        </label>
+
+        <button class="btn" type="submit">Log in</button>
+
+        <p class="err center" *ngIf="errorMsg">{{ errorMsg }}</p>
+        <p class="json" *ngIf="messageJson">{{ messageJson }}</p>
+      </form>
+    </div>
+  </div>
+</div>
