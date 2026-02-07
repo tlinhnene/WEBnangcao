@@ -1,0 +1,48 @@
+<p>{{errMessage}}</p>
+<p class="ok" *ngIf="okMessage">{{ okMessage }}</p>
+<p class="err" *ngIf="errMessage">{{ errMessage }}</p>
+
+<table>
+    <tr>
+        <td>Book Id:</td>
+        <td>
+            <input type="text" class="form-control" #name="ngModel" name="BookId" id="BookId" placeholder="Enter Book Id" [(ngModel)]="book.BookId"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Book Name:</td>
+        <td>
+            <input type="text" class="form-control" #name="ngModel" name="BookName" id="BookName" placeholder="Enter Book Name" [(ngModel)]="book.BookName"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Price:</td>
+        <td>
+            <input type="text" class="form-control" #name="ngModel" name="BookPrice" id="BookPrice" placeholder="Enter Price" [(ngModel)]="book.Price"/>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button (click)="postBook()">Submit</button>
+        </td>
+    </tr>
+</table>
+<table border="1">
+    <tr>
+        <td>BookId</td>
+        <td>BookName</td>
+        <td>Price</td>
+        <td>Image</td>
+    </tr>
+    <tbody>
+        <tr *ngFor="let book of books">
+            <td>{{book.BookId}}</td>
+            <td>{{book.BookName}}</td>
+            <td>{{book.Price}} </td>
+            <td>
+                <img [src]="'assets/book_images/' + book.Image" width="50" height="50" />
+            </td>
+         </tr>
+    </tbody>
+</table>
+<a routerLink="../ex39"> Return to List Book</a>

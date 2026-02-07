@@ -1,0 +1,88 @@
+.book-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13.5px;
+  background: #fff;
+  border: 1px solid #94a3b8;   
+}
+
+.book-table th,
+.book-table td {
+  border: 1px solid #cbd5e1;  
+  padding: 10px 10px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.book-table thead th {
+  background: #f1f5f9;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.book-table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.book-table tbody tr:hover {
+  background: #f0f9ff;
+}
+
+.desc-content {
+  max-height: 76px;
+  overflow: hidden;
+  line-height: 1.45;
+  color: #374151;
+}
+
+.thumb {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.action {
+  white-space: normal;  
+  line-height: 1.6;
+}
+
+.action .link {
+  display: inline-block;
+}
+
+.link {
+  cursor: pointer;       
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link.danger {
+  color: #e53935;
+  cursor: pointer;       
+}
+
+.link.danger:hover {
+  color: #c62828;
+}
+.action {
+  text-align: center;
+  line-height: 1.8;
+}
+
+.action .link {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.action .danger {
+  color: #e53935;
+}

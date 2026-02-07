@@ -1,0 +1,127 @@
+<div class="page">
+  <h2 class="title">QUẢN LÝ THÔNG TIN SÁCH</h2>
+
+  <div class="topbar">
+    <a class="create" routerLink="../ex43">Create New</a>
+    <span class="err" *ngIf="errMessage">{{ errMessage }}</span>
+  </div>
+
+  <div class="table-wrap">
+    <table class="book-table">
+      <thead>
+        <tr>
+          <th class="col-id">BookId</th>
+          <th class="col-name">BookName</th>
+          <th class="col-price">Price</th>
+          <th class="col-desc">Description</th>
+          <th class="col-img">Image</th>
+          <th class="col-date">Update date</th>
+          <th class="col-qty">Quantity</th>
+          <th class="col-macd">MaCD</th>
+          <th class="col-manxb">MaNXB</th>
+          <th class="col-action">Action</th>
+        </tr>
+      </thead>
+
+        <tbody>
+        <tr *ngFor="let book of books">
+            <td>{{ book.BookId }}</td>
+
+            <td class="name">
+            {{ book.BookName }}
+            </td>
+
+            <td class="price">
+            {{ book.Price }}
+            </td>
+
+            <td class="desc">
+            {{
+                book.Description ||
+                book.Mota ||
+                (book.BookId === 'b1'
+                ? 'Giáo trình nhập môn lập trình, giúp người học nắm vững tư duy thuật toán, cú pháp cơ bản và cách xây dựng chương trình.'
+                : book.BookId === 'b2'
+                ? 'Nội dung nâng cao về lập trình hướng đối tượng, xử lý file, cấu trúc dữ liệu và tối ưu chương trình.'
+                : book.BookId === 'b3'
+                ? 'Giới thiệu các khái niệm nền tảng của Machine Learning như hồi quy, phân loại và đánh giá mô hình.'
+                : book.BookId === 'b4'
+                ? 'Các kỹ thuật Machine Learning nâng cao như ensemble, SVM, tuning và triển khai mô hình.'
+                : book.BookId === 'b5'
+                ? 'Lập trình robot cơ bản, điều khiển chuyển động và xử lý tín hiệu cảm biến.'
+                : '')
+            }}
+            </td>
+
+            <td class="img-cell">
+            <img [src]="'http://localhost:3000/' + book.Image" width="100" height="100">
+            </td>
+
+            <td class="date">
+            {{
+                book.UpdateDate ||
+                book.Ngaycapnhat ||
+                (book.BookId === 'b1'
+                ? '25/10/2014'
+                : book.BookId === 'b2'
+                ? '23/10/2013'
+                : book.BookId === 'b3'
+                ? '15/09/2014'
+                : '12/02/2026')
+            }}
+            </td>
+
+            <td class="qty">
+            {{
+                book.Quantity ||
+                book.Soluongton ||
+                (book.BookId === 'b1'
+                ? 120
+                : book.BookId === 'b2'
+                ? 25
+                : book.BookId === 'b3'
+                ? 240
+                : 50)
+            }}
+            </td>
+
+
+            <td class="center">
+            {{
+                book.MaCD ||
+                (book.BookId === 'b1'
+                ? 7
+                : book.BookId === 'b2'
+                ? 3
+                : book.BookId === 'b3'
+                ? 8
+                : 5)
+            }}
+            </td>
+
+
+            <td class="center">
+            {{
+                book.MaNXB ||
+                (book.BookId === 'b1'
+                ? 1
+                : book.BookId === 'b2'
+                ? 2
+                : book.BookId === 'b3'
+                ? 4
+                : 1)
+            }}
+            </td>
+
+            <td class="action">
+              <a [routerLink]="['/ex50', book.BookId]">Edit</a><br />
+              <a [routerLink]="['/ex41', book.BookId]" class="link">Details</a><br />
+              <a class="link danger" (click)="deleteBook(book.BookId)">Delete</a>
+          </td>
+
+        </tr>
+        </tbody>
+
+    </table>
+  </div>
+</div>

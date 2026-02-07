@@ -1,0 +1,57 @@
+<h2 class="title">Edit Book</h2>
+
+<p class="ok" *ngIf="okMessage">{{ okMessage }}</p>
+<p class="err" *ngIf="errMessage">{{ errMessage }}</p>
+
+<div class="card">
+  <table class="form-table">
+    <tr>
+      <td class="label">Old Book Id</td>
+      <td>
+        <input class="input" type="text" [value]="oldId" disabled />
+        <small class="hint">Id hiện tại (không đổi ở ô này)</small>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="label">New Book Id</td>
+      <td>
+        <input class="input" type="text" [(ngModel)]="book.BookId" placeholder="Enter new Book Id" />
+        <small class="hint">Nhập Id mới để đổi</small>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="label">Book Name</td>
+      <td>
+        <input class="input" type="text" [(ngModel)]="book.BookName" placeholder="Enter Book Name" />
+      </td>
+    </tr>
+
+    <tr>
+      <td class="label">Price</td>
+      <td>
+        <input class="input" type="number" [(ngModel)]="book.Price" placeholder="Enter Price" />
+      </td>
+    </tr>
+
+    <tr>
+      <td class="label">Description</td>
+      <td>
+        <textarea class="input" rows="4" [(ngModel)]="book.Description" placeholder="Enter Description"></textarea>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="label">Quantity</td>
+      <td>
+        <input class="input" type="number" [(ngModel)]="book.Quantity" placeholder="Enter Quantity" />
+      </td>
+    </tr>
+  </table>
+
+  <div class="actions">
+    <button class="btn primary" (click)="save()">Save</button>
+    <button class="btn" (click)="cancel()">Cancel</button>
+  </div>
+</div>
