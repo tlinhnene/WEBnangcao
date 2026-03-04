@@ -1,0 +1,21 @@
+<div class="payment-container">
+
+  <div class="payment-card">
+
+    <div class="header">
+      <h2>MoMo Payment</h2>
+      <p>Nhập số tiền để thanh toán</p>
+    </div>
+
+    <div class="form-group">
+      <label>Số tiền (VNĐ)</label>
+      <input type="number" [(ngModel)]="amount" placeholder="Ví dụ: 50000">
+    </div>
+
+    <button class="pay-btn" (click)="payWithMomo()">
+      Thanh toán với MoMo
+    </button>
+
+  </div>
+
+</div>

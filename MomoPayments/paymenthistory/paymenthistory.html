@@ -1,0 +1,60 @@
+<div class="history-container">
+
+  <div class="history-card">
+
+    <div class="header">
+      <h2>Lịch sử thanh toán</h2>
+      <p>Các giao dịch MoMo gần đây</p>
+    </div>
+
+    <table class="history-table">
+
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Số tiền</th>
+          <th>Trạng thái</th>
+          <th>Thời gian</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let p of payments">
+
+          <td class="order-id">{{ p.orderId }}</td>
+
+          <td class="amount">
+            {{ p.amount | number }} đ
+          </td>
+
+          <td>
+            <span
+              class="status"
+              [ngClass]="{
+                'paid': p.status === 'paid',
+                'failed': p.status === 'failed',
+                'pending': p.status !== 'paid' && p.status !== 'failed'
+              }"
+            >
+              {{
+                p.status === 'paid'
+                  ? 'Thành công'
+                  : p.status === 'failed'
+                  ? 'Thất bại'
+                  : 'Đang chờ'
+              }}
+            </span>
+          </td>
+
+          <td class="time">
+            {{ p.createdAt | date:'short' }}
+          </td>
+
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
