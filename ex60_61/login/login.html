@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">Login System</div>
+
+    <div class="card-body">
+      <form (ngSubmit)="login()">
+        <div class="mb-3">
+          <label for="name-reg" class="form-label">User Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name-reg"
+            [(ngModel)]="username"
+            name="username"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="password-reg" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password-reg"
+            [(ngModel)]="password"
+            name="password"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+
+      <div class="mt-2 text-success" *ngIf="message">
+        {{ message }}
+      </div>
+
+      <div class="mt-2 text-danger" *ngIf="error">
+        {{ error }}
+      </div>
+    </div>
+  </div>
+</div>
