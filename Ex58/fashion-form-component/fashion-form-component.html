@@ -1,0 +1,48 @@
+<div class="page">
+  <h2 class="title">{{ isEdit ? 'Edit Fashion' : 'Add New Fashion' }}</h2>
+
+  <p class="error" *ngIf="errMessage">{{ errMessage }}</p>
+
+  <div class="form-card">
+    <table class="fashion-table">
+      <tr>
+        <td>Style</td>
+        <td>
+          <input [(ngModel)]="fashion.style" name="style">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Fashion Subject</td>
+        <td>
+          <input [(ngModel)]="fashion.fashion_subject" name="fashion_subject">
+        </td>
+      </tr>
+
+      <tr>
+        <td>Fashion Detail</td>
+        <td class="editor-cell">
+          <ckeditor
+            [editor]="Editor"
+            [(ngModel)]="fashion.fashion_detail"
+            name="fashion_detail">
+          </ckeditor>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Fashion Image</td>
+        <td>
+          <input [(ngModel)]="fashion.fashion_image" name="fashion_image">
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td>
+          <button type="button" class="btn-save" (click)="saveFashion()">Save</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

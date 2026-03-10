@@ -1,0 +1,55 @@
+<div class="page">
+  <div class="card">
+    <div class="card-head">
+      <span class="badge">
+        <span class="badge-dot"></span>
+        Exercise 54
+      </span>
+      <h2 class="title">Fashion Detail</h2>
+      <p class="subtitle">Enter a Fashion ObjectId to view details from MongoDB</p>
+    </div>
+
+    <div class="form">
+      <div class="input-group">
+        <label class="label">Fashion ID</label>
+        <input
+          class="input"
+          [(ngModel)]="fashionId"
+          placeholder="e.g. 640cbca3b3caa928621a5d6d"
+        />
+      </div>
+
+      <button type="button" class="btn" (click)="search()">Search</button>
+    </div>
+
+    <div class="err" *ngIf="errMessage">{{ errMessage }}</div>
+
+    <div class="fashion-box" *ngIf="fashion">
+      <div class="fashion-info">
+        <div class="info-item">
+          <span class="info-label">Fashion ID</span>
+          <span class="info-value">{{ fashion._id }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Style</span>
+          <span class="info-value">{{ fashion.style }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Fashion Subject</span>
+          <span class="info-value">{{ fashion.fashion_subject }}</span>
+        </div>
+
+        <div class="info-item">
+          <span class="info-label">Fashion Detail</span>
+          <span class="info-value">{{ fashion.fashion_detail }}</span>
+        </div>
+      </div>
+
+      <div class="fashion-image" *ngIf="fashion.fashion_image">
+        <img [src]="fashion.fashion_image" alt="fashion" />
+      </div>
+    </div>
+  </div>
+</div>

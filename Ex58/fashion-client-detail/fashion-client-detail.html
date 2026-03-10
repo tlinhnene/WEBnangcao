@@ -1,0 +1,14 @@
+<p style="color:red" *ngIf="errMessage">{{ errMessage }}</p>
+
+<div *ngIf="fashion">
+  <h2>{{ fashion.fashion_subject }}</h2>
+  <p><b>Style:</b> {{ fashion.style }}</p>
+
+  <div [innerHTML]="fashion.fashion_detail"></div>
+
+  <img
+    *ngIf="fashion.fashion_image"
+    [src]="fashion.fashion_image"
+    width="500"
+  >
+</div>

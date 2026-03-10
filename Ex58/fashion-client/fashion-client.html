@@ -1,0 +1,27 @@
+<h2>Fashion Client</h2>
+<p style="color:red">{{errMessage}}</p>
+
+<label>Choose Style:</label>
+<select [(ngModel)]="selectedStyle">
+  <option value="">-- All Styles --</option>
+  <option *ngFor="let s of styleList" [value]="s">{{ s }}</option>
+</select>
+
+<button type="button" (click)="filterByStyle()">Search</button>
+
+<br><br>
+
+<div *ngFor="let style of getStyleKeys()">
+  <h3 style="text-align:center">{{ style }}</h3>
+
+  <div class="fashion-grid">
+    <div
+      class="fashion-card"
+      *ngFor="let fashion of groupedFashions[style]"
+      (click)="viewDetail(fashion._id)"
+    >
+      <img [src]="fashion.fashion_image" alt="fashion">
+      <p>{{ fashion.fashion_subject }}</p>
+    </div>
+  </div>
+</div>

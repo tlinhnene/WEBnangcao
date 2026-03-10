@@ -1,0 +1,97 @@
+.page {
+  max-width: 950px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.form-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.fashion-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.fashion-table tr:not(:last-child) td {
+  padding-bottom: 18px;
+}
+
+.fashion-table td:first-child {
+  width: 180px;
+  vertical-align: top;
+  font-weight: 700;
+  color: #1e293b;
+  padding-top: 12px;
+}
+
+.fashion-table td:last-child {
+  width: auto;
+}
+
+.fashion-table input {
+  width: 100%;
+  max-width: 500px;
+  height: 44px;
+  padding: 0 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.fashion-table input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.editor-cell {
+  width: 100%;
+}
+
+ckeditor {
+  display: block;
+  width: 100%;
+}
+
+.btn-save {
+  min-width: 130px;
+  height: 44px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 10px;
+  background: #163b73;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-save:hover {
+  background: #1d4f99;
+  transform: translateY(-1px);
+}

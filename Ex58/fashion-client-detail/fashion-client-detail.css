@@ -1,0 +1,11 @@
+.detail-page {
+  width: 800px;
+  margin: 20px auto;
+}
+
+.detail-page img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 15px 0;
+}

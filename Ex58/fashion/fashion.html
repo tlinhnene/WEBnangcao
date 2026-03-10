@@ -1,0 +1,40 @@
+<p>fashion works!</p>
+<p style="color:red">{{errMessage}}</p>
+
+<button type="button" (click)="addNewFashion()">Add New Fashion</button>
+
+<br><br>
+
+<label>Filter by Style:</label>
+<input [(ngModel)]="selectedStyle" placeholder="Enter style">
+<button type="button" (click)="filterByStyle()">Search</button>
+
+<br><br>
+
+<table border="1" width="100%">
+  <tr>
+    <td>Id</td>
+    <td>Style</td>
+    <td>Fashion Subject</td>
+    <td>Fashion Detail</td>
+    <td>Image</td>
+    <td>Actions</td>
+  </tr>
+
+  <tbody>
+    <tr *ngFor="let fashion of fashions">
+      <td>{{fashion._id}}</td>
+      <td>{{fashion.style}}</td>
+      <td>{{fashion.fashion_subject}}</td>
+      <td>{{fashion.fashion_detail}}</td>
+      <td>
+        <img [src]="fashion.fashion_image" width="100" height="100">
+      </td>
+      <td>
+        <button type="button" (click)="viewDetail(fashion._id)">View</button>
+        <button type="button" (click)="editFashion(fashion._id)">Edit</button>
+        <button type="button" (click)="deleteFashion(fashion._id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

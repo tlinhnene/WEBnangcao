@@ -1,0 +1,27 @@
+.fashion-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.fashion-card {
+  width: 220px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  cursor: pointer;
+  background: #fff;
+}
+
+.fashion-card img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+.fashion-card p {
+  font-size: 14px;
+  margin: 0;
+}
