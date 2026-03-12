@@ -1,0 +1,30 @@
+.student-box {
+  text-align: center;
+  animation: moveUpDown 2s infinite alternate;
+}
+
+.student-box img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+  border: 3px solid #444;
+}
+
+.student-box h3 {
+  margin: 10px 0 6px;
+}
+
+.student-box p {
+  margin: 0;
+  font-weight: bold;
+}
+
+@keyframes moveUpDown {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(18px);
+  }
+}

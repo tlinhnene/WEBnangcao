@@ -1,0 +1,319 @@
+* {
+  box-sizing: border-box;
+}
+
+:host,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f6f8ef 0%, #eef4e3 100%);
+  color: #243018;
+}
+
+.layout {
+  width: min(1200px, 92%);
+  margin: 36px auto;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1.5px solid #dbe6c7;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(79, 104, 52, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+/* TOP MENU */
+.part-c {
+  background: linear-gradient(135deg, #dfecc7 0%, #cfe0ad 100%);
+  border-bottom: 1px solid #cfdbb7;
+  padding: 0 28px;
+}
+
+.menu {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.menu > a,
+.dropdown > span {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 20px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d3a1e;
+  cursor: pointer;
+  transition: all 0.28s ease;
+}
+
+.menu > a:hover,
+.dropdown > span:hover {
+  background: rgba(255, 255, 255, 0.55);
+  color: #18210f;
+  transform: translateY(-1px);
+}
+
+.menu > a::after,
+.dropdown > span::after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 8px;
+  height: 3px;
+  border-radius: 999px;
+  background: #6e8d43;
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.menu > a:hover::after,
+.dropdown:hover > span::after {
+  transform: scaleX(1);
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 220px;
+  background: #ffffff;
+  border: 1px solid #dbe6c7;
+  border-radius: 16px;
+  box-shadow: 0 14px 30px rgba(47, 64, 27, 0.14);
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.25s ease;
+  z-index: 999;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-content a {
+  display: block;
+  text-decoration: none;
+  color: #314122;
+  font-size: 15.5px;
+  font-weight: 600;
+  padding: 12px 14px;
+  border-radius: 12px;
+  transition: all 0.22s ease;
+}
+
+.dropdown-content a:hover {
+  background: #edf5de;
+  color: #1f2b13;
+  padding-left: 18px;
+}
+
+/* MIDDLE SECTION */
+.middle {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  min-height: 620px;
+  background: #f9fbf5;
+}
+
+/* MAIN CONTENT */
+.part-d {
+  padding: 34px;
+  background:
+    radial-gradient(circle at top left, rgba(214, 230, 187, 0.35), transparent 28%),
+    linear-gradient(180deg, #fbfcf8 0%, #f4f8ec 100%);
+  border-right: 1px solid #e1e8d2;
+}
+
+.part-d h1,
+.part-d h2,
+.part-d h3 {
+  margin-top: 0;
+  color: #223015;
+}
+
+.part-d h2 {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 18px;
+}
+
+.part-d p {
+  color: #55654a;
+  line-height: 1.6;
+}
+
+/* RIGHT PROFILE PANEL */
+.part-a {
+  padding: 28px 22px;
+  background: linear-gradient(180deg, #f5efd7 0%, #efe5c3 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  border-left: 1px solid #e2d7b4;
+}
+
+.part-a app-student-info,
+.part-a .student-info,
+.part-a .profile-card {
+  width: 100%;
+}
+
+/* nếu component student info bên trong chưa có css đẹp thì wrapper vẫn đẹp */
+.part-a::before {
+  content: "";
+  position: absolute;
+}
+
+.part-a {
+  position: relative;
+}
+
+.part-a > * {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(173, 154, 104, 0.22);
+  border-radius: 22px;
+  padding: 24px 18px;
+  box-shadow: 0 12px 28px rgba(125, 102, 49, 0.08);
+}
+
+/* BOTTOM LOGIN AREA */
+.part-b {
+  min-height: 76px;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, #ffffff 0%, #f3f7eb 100%);
+  border-top: 1px solid #dde7ce;
+}
+
+.part-b app-login,
+.part-b .login-box,
+.part-b .welcome-box {
+  width: 100%;
+}
+
+/* LOGIN TEXT / FOOTER STYLE */
+.part-b a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #45681d;
+  transition: 0.2s ease;
+}
+
+.part-b a:hover {
+  color: #2e4711;
+  text-decoration: underline;
+}
+
+/* router outlet content cards nhìn sang hơn */
+.part-d ::ng-deep .card,
+.part-d ::ng-deep .box,
+.part-d ::ng-deep .panel,
+.part-d ::ng-deep table {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 18px;
+}
+
+/* bảng nếu bên trong có dùng table */
+.part-d ::ng-deep table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(77, 102, 49, 0.08);
+}
+
+.part-d ::ng-deep th,
+.part-d ::ng-deep td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #edf2e3;
+}
+
+.part-d ::ng-deep th {
+  background: #ebf4db;
+  color: #314122;
+  text-align: left;
+}
+
+.part-d ::ng-deep tr:hover td {
+  background: #f8fbf1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .middle {
+    grid-template-columns: 1fr;
+  }
+
+  .part-d {
+    border-right: none;
+    border-bottom: 1px solid #e1e8d2;
+  }
+
+  .part-a {
+    border-left: none;
+    border-top: 1px solid #e2d7b4;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout {
+    width: 95%;
+    margin: 20px auto;
+    border-radius: 18px;
+  }
+
+  .part-c {
+    padding: 0 16px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 0;
+    min-height: auto;
+  }
+
+  .menu > a,
+  .dropdown > span {
+    width: auto;
+    font-size: 16px;
+    padding: 0 16px;
+  }
+
+  .part-d,
+  .part-a,
+  .part-b {
+    padding: 18px;
+  }
+
+  .part-d h2 {
+    font-size: 28px;
+  }
+  .content-card {
+  min-height: 100%;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid #e5edd8;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(80, 106, 50, 0.08);
+}
+}

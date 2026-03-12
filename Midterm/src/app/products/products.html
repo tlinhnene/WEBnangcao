@@ -1,0 +1,110 @@
+<div class="products-page">
+  <div class="products-hero">
+    <div class="hero-left">
+      <span class="hero-badge">MICKEY Store Collection</span>
+      <h1>Products</h1>
+      <p class="hero-subtitle">
+        Browse our featured collection, filter items by category and price, and shop your favorite products with ease.
+      </p>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-icon">🛍️</div>
+    </div>
+  </div>
+
+  <div class="filter-card">
+    <div class="filter-top">
+      <h2>Filter Products</h2>
+      <p>Use the filters below to find the right products faster.</p>
+    </div>
+
+    <div class="filter-grid">
+      <div class="filter-group">
+        <label for="minPrice">Min Price</label>
+        <input
+          id="minPrice"
+          type="number"
+          [(ngModel)]="minPrice"
+          placeholder="Enter min price"
+        />
+      </div>
+
+      <div class="filter-group">
+        <label for="maxPrice">Max Price</label>
+        <input
+          id="maxPrice"
+          type="number"
+          [(ngModel)]="maxPrice"
+          placeholder="Enter max price"
+        />
+      </div>
+
+      <div class="filter-group">
+        <label for="category">Category</label>
+        <select id="category" [(ngModel)]="categoryId">
+          <option value="">All Categories</option>
+          <option *ngFor="let c of categories" [value]="c.categoryId">
+            {{ c.categoryName }}
+          </option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="sortPrice">Sort Price</label>
+        <select id="sortPrice" [(ngModel)]="sortPrice">
+          <option value="">No Sort</option>
+          <option value="asc">Price Low → High</option>
+          <option value="desc">Price High → Low</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="filter-actions">
+      <button class="search-btn" (click)="applyFilter()">Search</button>
+      <button class="reset-btn" (click)="resetFilter()">Reset</button>
+    </div>
+  </div>
+
+  <div class="message error-message" *ngIf="errMessage">
+    {{ errMessage }}
+  </div>
+
+  <div class="product-summary">
+    <div>
+      <h2>Available Products</h2>
+      <p>Explore the items currently available in store.</p>
+    </div>
+    <span class="product-count">{{ products.length }} item(s)</span>
+  </div>
+
+  <div class="empty-state" *ngIf="!errMessage && products.length === 0">
+    <div class="empty-icon">📦</div>
+    <h3>No products found</h3>
+    <p>Try adjusting the filter conditions to see more products.</p>
+  </div>
+
+  <div class="product-grid" *ngIf="products.length > 0">
+    <div class="product-card" *ngFor="let p of products">
+      <div class="image-box">
+        <img [src]="p.image" [alt]="p.productName" />
+      </div>
+
+      <div class="product-info">
+        <h3>{{ p.productName }}</h3>
+
+        <p class="price">${{ p.price }}</p>
+
+        <p class="category">
+          Category:
+          <span>{{ p.categoryName || p.categoryId }}</span>
+        </p>
+      </div>
+
+      <div class="product-actions">
+        <button class="detail-btn" (click)="viewDetail(p)">View Detail</button>
+        <button class="buy-btn" (click)="buy(p)">Buy Now</button>
+      </div>
+    </div>
+  </div>
+</div>
