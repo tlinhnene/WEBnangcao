@@ -1,0 +1,67 @@
+<div class="login-wrapper">
+  <div class="login-card" *ngIf="!currentUser; else loggedInBlock">
+    <div class="login-top">
+      <span class="login-badge">Account Access</span>
+      <h2>Login</h2>
+      <p>
+        Sign in as customer or employee to continue using the MICKEY Store system.
+      </p>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        [(ngModel)]="email"
+        placeholder="Enter your email"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        [(ngModel)]="password"
+        placeholder="Enter your password"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="role">Role</label>
+      <select id="role" [(ngModel)]="role">
+        <option value="customer">Customer</option>
+        <option value="employee">Employee</option>
+      </select>
+    </div>
+
+    <button class="login-btn" (click)="login()">Login</button>
+
+    <p class="message" *ngIf="message">{{ message }}</p>
+  </div>
+
+  <ng-template #loggedInBlock>
+    <div class="login-card logged-in-card">
+      <div class="user-box">
+        <div class="avatar-circle">
+          {{ currentUser?.fullName?.charAt(0) || 'U' }}
+        </div>
+
+        <div class="user-info">
+          <span class="login-badge success-badge">Logged In</span>
+          <h2>Welcome back</h2>
+          <h3>{{ currentUser?.fullName }}</h3>
+          <p><strong>Role:</strong> {{ role | titlecase }}</p>
+          <p *ngIf="currentUser?.email"><strong>Email:</strong> {{ currentUser.email }}</p>
+        </div>
+      </div>
+
+      <div class="logged-actions">
+        <button class="logout-btn" (click)="logout()">Logout</button>
+      </div>
+
+      <p class="message success-message" *ngIf="message">{{ message }}</p>
+    </div>
+  </ng-template>
+</div>

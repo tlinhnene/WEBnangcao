@@ -1,0 +1,72 @@
+<div class="revenue-page">
+  <div class="revenue-card">
+    <div class="card-header">
+      <div>
+        <h2>Revenue Statistics</h2>
+        <p class="subtitle">View monthly revenue performance by category</p>
+      </div>
+      <div class="header-icon">📊</div>
+    </div>
+
+    <div class="filter-section">
+      <div class="input-group">
+        <label for="month">Month</label>
+        <input
+          id="month"
+          type="number"
+          [(ngModel)]="month"
+          min="1"
+          max="12"
+          placeholder="Enter month"
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="year">Year</label>
+        <input
+          id="year"
+          type="number"
+          [(ngModel)]="year"
+          min="2000"
+          max="2100"
+          placeholder="Enter year"
+        />
+      </div>
+
+      <div class="btn-group">
+        <button class="load-btn" (click)="loadRevenue()">Load Revenue</button>
+      </div>
+    </div>
+
+    <p class="message error" *ngIf="message">{{ message }}</p>
+
+    <div class="table-wrapper" *ngIf="result.length > 0">
+      <table class="revenue-table">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Category</th>
+            <th>Total Orders</th>
+            <th>Total Revenue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of result; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.categoryName || item.category || 'N/A' }}</td>
+            <td>{{ item.totalOrders || item.orders || 0 }}</td>
+            <td class="money">
+              {{ item.totalRevenue || item.revenue || 0 | number }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="empty-state" *ngIf="!message && result.length === 0">
+      <div class="empty-icon">💰</div>
+      <h3>No revenue data yet</h3>
+      <p>Please select month and year, then click <strong>Load Revenue</strong>.</p>
+    </div>
+  </div>
+</div>

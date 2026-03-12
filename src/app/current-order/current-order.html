@@ -1,0 +1,103 @@
+<div class="order-page">
+  <div class="order-card">
+    <div class="card-header">
+      <div class="header-left">
+        <h2>Current Order</h2>
+        <p>Search order details, update quantity, remove items, and pay order</p>
+      </div>
+      <div class="header-badge">🛒</div>
+    </div>
+
+    <div class="search-box">
+      <div class="input-group">
+        <label for="orderId">Order ID</label>
+        <input
+          id="orderId"
+          type="text"
+          [(ngModel)]="orderId"
+          placeholder="Enter order ID"
+        />
+      </div>
+
+      <button class="search-btn" (click)="loadOrderDetails()">
+        Load Order
+      </button>
+    </div>
+
+    <div class="empty-state" *ngIf="details.length === 0">
+      <div class="empty-icon">📦</div>
+      <h3>No order details</h3>
+      <p>Enter an order ID to view its item list.</p>
+    </div>
+
+    <div class="table-wrapper" *ngIf="details.length > 0">
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Product ID</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Amount</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of details; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.productId || item.ProductID || 'N/A' }}</td>
+            <td>
+              <input
+                class="table-input"
+                type="number"
+                [(ngModel)]="item.quantity"
+                min="1"
+              />
+            </td>
+            <td>
+              <input
+                class="table-input"
+                type="number"
+                [(ngModel)]="item.price"
+                min="0"
+              />
+            </td>
+            <td class="amount">
+              {{ (item.quantity || 0) * (item.price || 0) | number }}
+            </td>
+            <td>
+              <div class="action-buttons">
+                <button class="update-btn" (click)="updateQty(item)">
+                  Update
+                </button>
+                <button class="remove-btn" (click)="removeItem(item._id)">
+                  Remove
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer-section" *ngIf="details.length > 0">
+      <div class="summary-box">
+        <span>Total Items: <strong>{{ details.length }}</strong></span>
+        <span>
+          Total Amount:
+          <strong class="total-money">
+            {{
+              details.reduce(
+                (sum, item) => sum + (item.quantity || 0) * (item.price || 0),
+                0
+              ) | number
+            }}
+          </strong>
+        </span>
+      </div>
+
+      <button class="pay-btn" (click)="payOrder()">Pay Order</button>
+    </div>
+  </div>
+</div>

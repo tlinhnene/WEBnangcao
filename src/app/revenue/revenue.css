@@ -1,0 +1,240 @@
+* {
+  box-sizing: border-box;
+}
+
+.revenue-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #eef2ff 0%, #f8fbff 50%, #fdf2f8 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.revenue-card {
+  width: 100%;
+  max-width: 1100px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(67, 97, 238, 0.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.subtitle {
+  margin: 8px 0 0;
+  color: #64748b;
+  font-size: 15px;
+}
+
+.header-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: white;
+  box-shadow: 0 12px 25px rgba(99, 102, 241, 0.25);
+}
+
+.filter-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 20px;
+  align-items: end;
+  margin-bottom: 24px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #334155;
+  font-size: 14px;
+}
+
+.input-group input {
+  height: 48px;
+  padding: 0 16px;
+  border: 1.5px solid #dbeafe;
+  border-radius: 14px;
+  font-size: 15px;
+  background: #f8fafc;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.input-group input:focus {
+  border-color: #6366f1;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.12);
+}
+
+.btn-group {
+  display: flex;
+  align-items: end;
+}
+
+.load-btn {
+  height: 48px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 10px 24px rgba(79, 70, 229, 0.25);
+}
+
+.load-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(79, 70, 229, 0.35);
+}
+
+.load-btn:active {
+  transform: scale(0.98);
+}
+
+.message {
+  margin: 18px 0;
+  padding: 14px 16px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 16px;
+}
+
+.revenue-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.revenue-table thead {
+  background: linear-gradient(135deg, #4338ca, #7c3aed);
+  color: white;
+}
+
+.revenue-table th,
+.revenue-table td {
+  padding: 16px 18px;
+  text-align: left;
+}
+
+.revenue-table th {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.revenue-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background 0.2s ease;
+}
+
+.revenue-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.revenue-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.revenue-table td {
+  color: #334155;
+  font-size: 14px;
+}
+
+.money {
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50px 20px 20px;
+  color: #64748b;
+}
+
+.empty-icon {
+  font-size: 52px;
+  margin-bottom: 12px;
+}
+
+.empty-state h3 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 22px;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 15px;
+}
+
+@media (max-width: 768px) {
+  .revenue-card {
+    padding: 22px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-section {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-group {
+    width: 100%;
+  }
+
+  .load-btn {
+    width: 100%;
+  }
+
+  .card-header h2 {
+    font-size: 26px;
+  }
+}

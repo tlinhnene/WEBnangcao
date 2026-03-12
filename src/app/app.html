@@ -1,0 +1,31 @@
+<div class="layout">
+  <div class="part-c">
+    <div class="menu">
+      <a routerLink="/product">Products</a>
+
+      <div class="dropdown">
+        <span>Order</span>
+        <div class="dropdown-content">
+          <a routerLink="/cart">Current Order</a>
+          <a routerLink="/revenue">Revenue Statistics</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="middle">
+    <div class="part-d">
+      <div class="content-card">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+    <div class="part-a">
+      <app-student-info></app-student-info>
+    </div>
+  </div>
+
+  <div class="part-b">
+    <app-login></app-login>
+  </div>
+</div>
